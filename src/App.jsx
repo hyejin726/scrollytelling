@@ -98,7 +98,7 @@ function AnalysisExamplePreview({ item }) {
           <div className="type-demo">
             <p className="type-demo__headline">챗봇 답변 제목</p>
             <p className="type-demo__body">
-              본문은 길게 읽히므로 line-height를 넉넉하게 둔다.
+              본문은 길게 읽히므로 line-height를 넉넉하게 둡니다.
             </p>
             <div className="type-demo__meta">
               <span>Status label</span>
@@ -235,6 +235,16 @@ function MeasurementProtocolSection() {
         <span>{measurementProtocol.description}</span>
       </div>
 
+      <div className="measurement-highlight-row" aria-label="발표 핵심 측정값">
+        {measurementProtocol.readingHighlights.map((item) => (
+          <article key={item.label}>
+            <span>{item.label}</span>
+            <strong>{item.value}</strong>
+            <p>{item.note}</p>
+          </article>
+        ))}
+      </div>
+
       <div className="measurement-layout">
         <div className="measurement-copy">
           <div className="measurement-principles">
@@ -243,6 +253,37 @@ function MeasurementProtocolSection() {
                 <span>{item.label}</span>
                 <strong>{item.value}</strong>
                 <p>{item.note}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="measurement-glossary" aria-label="측정 용어를 쉽게 읽는 법">
+            <div className="measurement-glossary__head">
+              <span>Term map</span>
+              <strong>0, 0.5, 1로 읽으면 쉽습니다</strong>
+              <p>
+                이 값들은 어려운 통계가 아니라 작업 영역 안에서 입력창이 어디에 있고,
+                얼마나 넓은지 보는 눈금입니다.
+              </p>
+            </div>
+            {measurementProtocol.metricGlossary.map((term) => (
+              <article
+                key={term.metric}
+                className={`measurement-glossary-card measurement-glossary-card--${term.visual}`}
+                style={{ '--marker': term.marker, '--fill': term.fill }}
+              >
+                <div className="measurement-glossary-card__visual" aria-hidden="true">
+                  <span>
+                    <i />
+                    <b />
+                  </span>
+                </div>
+                <div>
+                  <span>{term.metric}</span>
+                  <h3>{term.label}</h3>
+                  <p>{term.plain}</p>
+                  <small>{term.example}</small>
+                </div>
               </article>
             ))}
           </div>
@@ -639,10 +680,10 @@ function ProgressIndicatorAnalysis() {
           <div className="progress-demo-card__bar" aria-hidden="true">
             <span />
           </div>
-          <h3>읽기 진행률은 작은 내비게이션이다</h3>
+          <h3>읽기 진행률은 작은 내비게이션입니다</h3>
           <p>
             사용자가 긴 발표 자료를 스크롤할 때, 상단의 진행률은 “지금
-            어디쯤인지”를 계속 알려주는 조용한 피드백이다.
+            어디쯤인지”를 계속 알려주는 조용한 피드백입니다.
           </p>
         </div>
         <div className="progress-anatomy-grid">

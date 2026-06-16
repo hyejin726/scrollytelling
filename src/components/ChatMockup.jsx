@@ -21,17 +21,17 @@ const referenceExamples = [
   {
     name: 'ChatGPT',
     label: 'Files · Images · Tools · Canvas',
-    text: '입력창 주변에서 파일, 이미지, 도구, 작업 캔버스가 시작된다.',
+    text: '입력창 주변에서 파일, 이미지, 도구, 작업 캔버스가 시작됩니다.',
   },
   {
     name: 'Gemini',
     label: 'Upload · Google apps · Context',
-    text: '업로드한 자료와 연결 앱이 질문의 맥락을 넓힌다.',
+    text: '업로드한 자료와 연결 앱이 질문의 맥락을 넓힙니다.',
   },
   {
     name: 'Copilot',
     label: 'Add content · Tools · Pages',
-    text: '업무 자료와 작업 페이지가 답변 이후 흐름으로 이어진다.',
+    text: '업무 자료와 작업 페이지가 답변 이후 흐름으로 이어집니다.',
   },
 ];
 
