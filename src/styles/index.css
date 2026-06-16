@@ -94,6 +94,7 @@ a {
 
 .intro-section,
 .site-analysis-section,
+.measurement-section,
 .reference-section,
 .scrolly-elements-section,
 .sequence-timing-section,
@@ -1155,6 +1156,7 @@ a {
 }
 
 .site-analysis-section,
+.measurement-section,
 .reference-section,
 .scrolly-elements-section,
 .sequence-timing-section,
@@ -1350,6 +1352,281 @@ a {
   color: var(--text-soft);
   font-size: 13px;
   line-height: 1.58;
+}
+
+.measurement-layout {
+  display: grid;
+  grid-template-columns: minmax(520px, 1.06fr) minmax(360px, 0.94fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.measurement-copy {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.measurement-principles,
+.measurement-target-grid,
+.measurement-output-grid,
+.measurement-step-row {
+  display: grid;
+  gap: 14px;
+}
+
+.measurement-principles {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.measurement-target-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.measurement-output-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.measurement-principles article,
+.measurement-target-card,
+.measurement-output-card,
+.measurement-script-card,
+.measurement-step-row article,
+.measurement-range-table {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.045);
+}
+
+.measurement-principles article {
+  min-height: 170px;
+  padding: 16px;
+}
+
+.measurement-principles span,
+.measurement-target-card__head span,
+.measurement-output-card span,
+.measurement-script-card__head span,
+.measurement-range-table__head span,
+.measurement-range-table article span,
+.measurement-step-row span {
+  display: block;
+  color: var(--primary-strong);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.measurement-principles strong,
+.measurement-range-table article strong,
+.measurement-step-row strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.32;
+}
+
+.measurement-principles p,
+.measurement-target-card p,
+.measurement-output-card p,
+.measurement-range-table article p,
+.measurement-step-row p {
+  margin: 10px 0 0;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.measurement-target-card {
+  min-height: 360px;
+  padding: 18px;
+}
+
+.measurement-target-card__head h3 {
+  margin: 6px 0 0;
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.measurement-target-card ul {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.measurement-target-card li {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  margin-top: 10px;
+  color: var(--text-soft);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.measurement-target-card li svg {
+  margin-top: 2px;
+  color: var(--primary);
+  flex: 0 0 auto;
+}
+
+.measurement-target-card small {
+  display: block;
+  margin-top: 16px;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.measurement-output-card {
+  min-height: 330px;
+  padding: 18px;
+}
+
+.measurement-output-card h3 {
+  margin: 6px 0 0;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.measurement-output-card dl {
+  display: grid;
+  gap: 9px;
+  margin: 16px 0 0;
+}
+
+.measurement-output-card dl div {
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 9px;
+}
+
+.measurement-output-card dt {
+  color: var(--primary-strong);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.measurement-output-card dd {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.measurement-script-card {
+  position: sticky;
+  top: 28px;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--surface-strong);
+  color: white;
+}
+
+.measurement-script-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 16px;
+}
+
+.measurement-script-card__head span {
+  color: #9dccff;
+}
+
+.measurement-script-card__head strong {
+  color: white;
+  font-size: 15px;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.measurement-script-card pre {
+  margin: 0;
+  max-height: 520px;
+  overflow: auto;
+  padding: 16px;
+  background: transparent;
+}
+
+.measurement-script-card code {
+  color: rgba(255, 255, 255, 0.86);
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre;
+}
+
+.measurement-step-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+.measurement-step-row article {
+  min-height: 150px;
+  padding: 16px;
+}
+
+.measurement-range-table {
+  display: grid;
+  grid-template-columns: 190px repeat(5, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.measurement-range-table__head,
+.measurement-range-table article {
+  min-height: 190px;
+  padding: 16px;
+}
+
+.measurement-range-table__head {
+  background: var(--surface-strong);
+  color: white;
+}
+
+.measurement-range-table__head span {
+  color: #9dccff;
+}
+
+.measurement-range-table__head strong {
+  display: block;
+  margin-top: 10px;
+  color: white;
+  font-size: 24px;
+  line-height: 1.22;
+}
+
+.measurement-range-table article {
+  border-left: 1px solid var(--line-soft);
+}
+
+.measurement-range-table article strong {
+  color: var(--text);
+  font-size: 18px;
+}
+
+.measurement-range-table article p {
+  font-size: 13px;
+}
+
+.measurement-takeaway {
+  margin: 18px 0 0;
+  border-left: 3px solid var(--primary);
+  padding-left: 16px;
+  color: var(--text-soft);
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 .pattern-card,
@@ -2823,6 +3100,7 @@ a {
   .intro-section,
   .story-section,
   .visited-site-grid,
+  .measurement-layout,
   .reference-lab,
   .scrolly-lab,
   .sequence-timing-layout,
@@ -2858,6 +3136,11 @@ a {
     top: auto;
   }
 
+  .measurement-script-card {
+    position: relative;
+    top: auto;
+  }
+
   .sequence-video-panel {
     position: relative;
     top: auto;
@@ -2868,12 +3151,24 @@ a {
   }
 
   .pattern-grid,
+  .measurement-principles,
+  .measurement-output-grid,
+  .measurement-step-row,
   .sequence-observation-grid,
   .speed-option-grid,
   .progress-anatomy-grid,
   .progress-application-list,
   .backup-deck {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .measurement-range-table {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .measurement-range-table__head,
+  .measurement-range-table article {
+    min-height: auto;
   }
 
   .standards-section__copy,
@@ -2886,6 +3181,7 @@ a {
 @media (max-width: 760px) {
   .intro-section,
   .site-analysis-section,
+  .measurement-section,
   .reference-section,
   .scrolly-elements-section,
   .sequence-timing-section,
@@ -2945,6 +3241,11 @@ a {
   }
 
   .pattern-grid,
+  .measurement-principles,
+  .measurement-target-grid,
+  .measurement-output-grid,
+  .measurement-step-row,
+  .measurement-range-table,
   .visited-site-grid,
   .scrolly-elements-grid,
   .sequence-observation-grid,
@@ -2957,6 +3258,11 @@ a {
   .progress-application-list,
   .backup-deck {
     grid-template-columns: 1fr;
+  }
+
+  .measurement-output-card dl div {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 
   .sources-section {
@@ -3053,6 +3359,7 @@ a {
   .intro-section,
   .story-section,
   .site-analysis-section,
+  .measurement-section,
   .reference-section,
   .scrolly-elements-section,
   .sequence-timing-section,

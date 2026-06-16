@@ -20,6 +20,7 @@ import { useActiveStep } from './hooks/useActiveStep.js';
 import {
   analysisLayers,
   backupSlides,
+  measurementProtocol,
   motionTokens,
   muizzInteractionExamples,
   progressIndicatorAnalysis,
@@ -221,6 +222,109 @@ function ChatbotSiteAnalysisSection() {
           <VisitedSiteCard key={site.product} site={site} />
         ))}
       </div>
+    </section>
+  );
+}
+
+function MeasurementProtocolSection() {
+  return (
+    <section className="measurement-section" aria-labelledby="measurement-title">
+      <div className="section-heading">
+        <p>{measurementProtocol.kicker}</p>
+        <h2 id="measurement-title">{measurementProtocol.title}</h2>
+        <span>{measurementProtocol.description}</span>
+      </div>
+
+      <div className="measurement-layout">
+        <div className="measurement-copy">
+          <div className="measurement-principles">
+            {measurementProtocol.premise.map((item) => (
+              <article key={item.label}>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+                <p>{item.note}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="measurement-target-grid">
+            {measurementProtocol.targets.map((target) => (
+              <article key={target.product} className="measurement-target-card">
+                <div className="measurement-target-card__head">
+                  <span>{target.page}</span>
+                  <h3>{target.product}</h3>
+                </div>
+                <p>{target.selectorStrategy}</p>
+                <ul>
+                  {target.measurements.map((item) => (
+                    <li key={item}>
+                      <CheckCircle2 size={16} strokeWidth={2.1} aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <small>{target.interpretation}</small>
+              </article>
+            ))}
+          </div>
+
+          <div className="measurement-output-grid" aria-label="측정 출력값 읽는 법">
+            {measurementProtocol.outputExamples.map((item) => (
+              <article key={item.product} className="measurement-output-card">
+                <div>
+                  <span>Measured output</span>
+                  <h3>{item.product}</h3>
+                </div>
+                <p>{item.reading}</p>
+                <dl>
+                  {item.values.map(([metric, value]) => (
+                    <div key={metric}>
+                      <dt>{metric}</dt>
+                      <dd>{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <aside className="measurement-script-card" aria-label="DOM 측정 스크립트">
+          <div className="measurement-script-card__head">
+            <span>Console probe</span>
+            <strong>DOM rect + computed style</strong>
+          </div>
+          <pre>
+            <code>{measurementProtocol.script}</code>
+          </pre>
+        </aside>
+      </div>
+
+      <div className="measurement-step-row">
+        {measurementProtocol.steps.map((step) => (
+          <article key={step.label}>
+            <span>{step.label}</span>
+            <strong>{step.value}</strong>
+            <p>{step.note}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="measurement-range-table" aria-label="권장 측정값 범위">
+        <div className="measurement-range-table__head">
+          <span>Recommended range</span>
+          <strong>어떤 값이 적당한가</strong>
+        </div>
+        {measurementProtocol.recommendedRanges.map((item) => (
+          <article key={item.metric}>
+            <span>{item.metric}</span>
+            <strong>{item.good}</strong>
+            <p>{item.conclusion}</p>
+          </article>
+        ))}
+      </div>
+
+      <p className="measurement-takeaway">{measurementProtocol.takeaway}</p>
     </section>
   );
 }
@@ -668,6 +772,8 @@ function App() {
 
       <ChatbotSiteAnalysisSection />
 
+      <MeasurementProtocolSection />
+
       <section className="reference-section" aria-labelledby="reference-title">
         <div className="section-heading">
           <p>Reference Patterns</p>
@@ -831,7 +937,7 @@ function App() {
       <section id="backup" className="backup-section" aria-labelledby="backup-title">
         <div className="section-heading">
           <p>Print Backup</p>
-          <h2 id="backup-title">발표 환경 대비용 7장 요약</h2>
+          <h2 id="backup-title">발표 환경 대비용 8장 요약</h2>
           <span>브라우저 인쇄 또는 PDF 저장 시 이 영역만 슬라이드처럼 사용할 수 있습니다.</span>
         </div>
         <div className="backup-deck">

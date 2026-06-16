@@ -160,6 +160,167 @@ export const visitedChatbotSites = [
   },
 ];
 
+export const measurementProtocol = {
+  title: '측정값으로 여백과 집중 위치를 판단한다',
+  kicker: 'Measurement Protocol · ChatGPT + Gemini',
+  description:
+    'ChatGPT와 Gemini의 내부 React 소스코드를 그대로 읽는 방식은 공개 범위와 번들 난독화 때문에 근거가 불안정하다. 그래서 실제 브라우저가 렌더링한 DOM에서 composer, main pane, sidebar의 bounding rect와 computed style을 측정한다. 발표에서는 “대략 중앙에 있다”가 아니라 “main pane 기준 centerXRatio가 0.5에 가깝고, composer 폭은 720-860px 안에서 제한된다”처럼 읽는다.',
+  premise: [
+    {
+      label: '소스코드 직접 분석의 한계',
+      value: 'private app code',
+      note: '서비스 내부 컴포넌트명과 CSS class는 공개 API가 아니며, 배포 시점마다 hashed class와 bundle 구조가 달라질 수 있다.',
+    },
+    {
+      label: '측정 기준',
+      value: 'rendered DOM',
+      note: '눈대중 캡처 좌표가 아니라 getBoundingClientRect()와 getComputedStyle()로 브라우저가 계산한 실제 값을 본다.',
+    },
+    {
+      label: '비교 단위',
+      value: 'ratio, not screenshot px',
+      note: '절대 x/y보다 main pane 기준 center ratio, composer width ratio, max-width, margin, display 값을 기록한다.',
+    },
+  ],
+  targets: [
+    {
+      product: 'ChatGPT',
+      page: 'chatgpt.com',
+      selectorStrategy:
+        'textarea, [contenteditable="true"], form 후보를 찾고, 실제 입력창을 감싸는 composer 컨테이너를 기준으로 측정한다.',
+      measurements: [
+        'main pane 기준 composer centerX / centerY 비율',
+        'main pane 대비 composer width 비율',
+        'computed max-width, margin-left/right, display, position',
+        'sidebar 또는 navigation을 제외한 usable pane 폭',
+      ],
+      interpretation:
+        'ChatGPT는 전체 viewport 중앙이 아니라 좌측 navigation을 제외한 작업 영역 안에서 입력창이 어디에 놓이는지를 봐야 한다. 그래서 “가운데 같다”가 아니라 “main pane 기준 중심에 수렴한다”처럼 말한다.',
+    },
+    {
+      product: 'Gemini',
+      page: 'gemini.google.com',
+      selectorStrategy:
+        'textarea, rich-textarea, [contenteditable="true"], form 후보를 찾고, 실제 질문 입력 영역과 그 상위 컨테이너를 함께 측정한다.',
+      measurements: [
+        'main pane 기준 composer centerX / centerY 비율',
+        'composer width와 max-width 제한',
+        '입력창 주변의 vertical gap과 headline-composer 거리',
+        'left rail 또는 side panel이 열린 상태와 닫힌 상태의 usable pane 변화',
+      ],
+      interpretation:
+        'Gemini도 캡처의 절대 좌표보다 “입력창이 작업 영역 중앙에 어떻게 제한되는가”를 본다. 특히 dark surface, 중앙 glow, 짧은 headline, compact composer가 여백을 통해 집중점을 만드는 방식을 비율로 기록한다.',
+    },
+  ],
+  outputExamples: [
+    {
+      product: 'ChatGPT',
+      reading:
+        '좌측 navigation이 있어도 composer는 전체 화면이 아니라 main pane 안에서 중심을 잡는지 확인한다.',
+      values: [
+        ['centerXRatio', '0.50에 가까울수록 안정'],
+        ['centerYRatio', '0.42-0.50이면 시작점이 너무 아래로 밀리지 않음'],
+        ['widthRatio', '0.45-0.55이면 입력창이 과하게 길거나 좁지 않음'],
+        ['composerWidth', '720-860px 안에서 읽기 폭을 제한'],
+      ],
+    },
+    {
+      product: 'Gemini',
+      reading:
+        '짧은 headline과 composer가 한 덩어리로 보이는지, dark surface 안에서 중심 비율이 유지되는지 본다.',
+      values: [
+        ['centerXRatio', '0.50에 가까울수록 안정'],
+        ['centerYRatio', '0.45-0.54이면 headline과 composer가 한 초점으로 읽힘'],
+        ['widthRatio', '0.38-0.50이면 여백이 충분히 살아남음'],
+        ['composerWidth', '680-820px 안에서 compact한 입력 영역 유지'],
+      ],
+    },
+  ],
+  recommendedRanges: [
+    {
+      metric: 'centerXRatio',
+      good: '0.48-0.52',
+      conclusion:
+        '입력창 중심이 main pane 중앙에서 ±2% 안에 있으면 사용자는 “여기가 시작점”이라고 빠르게 인식한다.',
+    },
+    {
+      metric: 'centerYRatio',
+      good: '0.42-0.54',
+      conclusion:
+        '첫 화면에서는 정중앙보다 살짝 위부터 중앙까지가 좋다. 너무 위면 명령창처럼 딱딱하고, 너무 아래면 시작점이 늦게 보인다.',
+    },
+    {
+      metric: 'widthRatio',
+      good: '0.38-0.55',
+      conclusion:
+        'main pane 대비 입력창이 절반 안팎이면 집중과 여백이 같이 산다. 0.6을 넘으면 입력창이 화면을 지배하고, 0.35보다 작으면 도구성이 약해진다.',
+    },
+    {
+      metric: 'composerWidth',
+      good: '680-860px',
+      conclusion:
+        '데스크톱에서는 이 범위가 한 줄 입력, placeholder, 도구 버튼을 담기에 안정적이다. 넓은 화면에서는 px 고정이 아니라 max-width로 제한해야 한다.',
+    },
+    {
+      metric: 'marginLeft / marginRight',
+      good: 'auto 또는 균형 차이 5% 이내',
+      conclusion:
+        '좌우 여백이 비슷해야 composer가 작업 영역의 중심으로 읽힌다. 단, sidebar가 있으면 viewport가 아니라 main pane 기준으로 봐야 한다.',
+    },
+  ],
+  steps: [
+    {
+      label: 'Viewport set',
+      value: '1280 / 1440 / 1920px',
+      note: '100% zoom에서 3개 폭을 반복 측정해 한 캡처의 우연한 좌표가 아니라 유지되는 레이아웃 규칙을 찾는다.',
+    },
+    {
+      label: 'Open state',
+      value: 'same login / panel state',
+      note: '로그인 여부, side panel open/close, 브라우저 zoom이 다르면 수치가 바뀌므로 측정 상태를 같이 기록한다.',
+    },
+    {
+      label: 'Record',
+      value: 'DOM rect + computed CSS',
+      note: 'composer, main pane, sidebar의 rect와 computed style을 표로 남기고, px값보다 비율과 제약 조건을 해석한다.',
+    },
+  ],
+  script: `function findComposer() {
+  const editable = document.querySelector(
+    'textarea, rich-textarea, [contenteditable="true"]'
+  );
+  if (!editable) return null;
+
+  return (
+    editable.closest('form') ||
+    editable.closest('[role="form"]') ||
+    editable.parentElement
+  );
+}
+
+const composer = findComposer();
+const main = composer?.closest('main') || document.querySelector('main') || document.body;
+const c = composer.getBoundingClientRect();
+const m = main.getBoundingClientRect();
+const cs = getComputedStyle(composer);
+
+console.table({
+  viewport: \`\${window.innerWidth} x \${window.innerHeight}\`,
+  composerWidth: Math.round(c.width),
+  composerHeight: Math.round(c.height),
+  centerXRatio: (((c.left + c.width / 2) - m.left) / m.width).toFixed(3),
+  centerYRatio: (((c.top + c.height / 2) - m.top) / m.height).toFixed(3),
+  widthRatio: (c.width / m.width).toFixed(3),
+  display: cs.display,
+  position: cs.position,
+  maxWidth: cs.maxWidth,
+  marginLeft: cs.marginLeft,
+  marginRight: cs.marginRight,
+});`,
+  takeaway:
+    '결론은 단순하다. 좋은 챗봇 첫 화면은 입력창을 화면 한가운데에 “그냥” 놓지 않는다. 좌측 navigation이나 rail을 제외한 작업 영역 안에서 centerXRatio는 0.5 근처로 맞추고, composer 폭은 680-860px 정도로 제한하며, centerYRatio는 0.42-0.54 안에서 시작점을 만든다. 이 범위를 벗어나면 여백은 장식이 아니라 집중을 방해하는 빈 공간이 된다.',
+};
+
 export const referenceSections = [
   {
     index: '01',
@@ -635,7 +796,16 @@ export const backupSlides = [
     ],
   },
   {
-    eyebrow: '03 / Scrollytelling',
+    eyebrow: '03 / DOM measurement',
+    title: '측정값으로 여백과 집중 위치를 판단',
+    points: [
+      '원본 앱 소스코드는 비공개이거나 배포마다 바뀌는 hashed bundle이므로 내부 함수명을 추측하지 않음',
+      'ChatGPT와 Gemini 모두 getBoundingClientRect()와 getComputedStyle()로 centerXRatio, centerYRatio, widthRatio, max-width를 출력',
+      '권장 범위는 centerXRatio 0.48-0.52, centerYRatio 0.42-0.54, widthRatio 0.38-0.55, composerWidth 680-860px',
+    ],
+  },
+  {
+    eyebrow: '04 / Scrollytelling',
     title: '분석에 좋은 스크롤 장치',
     points: [
       'sticky mockup으로 같은 화면에서 상태 변화만 보여줌',
@@ -644,7 +814,7 @@ export const backupSlides = [
     ],
   },
   {
-    eyebrow: '04 / Scroll timing',
+    eyebrow: '05 / Scroll timing',
     title: '순번형 스크롤은 입력 간격이 중요하다',
     points: [
       'Chanel J12는 active 버튼 순번 이동 아이디어는 참고할 수 있지만, 실제 스크롤 체감은 불안정한 anti-pattern으로 다룸',
@@ -653,7 +823,7 @@ export const backupSlides = [
     ],
   },
   {
-    eyebrow: '05 / Visual grammar',
+    eyebrow: '06 / Visual grammar',
     title: '시간 · 글씨체 · 색상 분석',
     points: [
       '120/200/320/480ms로 즉시 반응, 현재 위치, 답변 등장, 큰 장면 전환을 나눔',
@@ -662,7 +832,7 @@ export const backupSlides = [
     ],
   },
   {
-    eyebrow: '06 / Motion',
+    eyebrow: '07 / Motion',
     title: '모션은 장식이 아니라 설명',
     points: [
       'feedback: 입력, 클릭, 로딩 상태를 즉시 알려줌',
@@ -671,7 +841,7 @@ export const backupSlides = [
     ],
   },
   {
-    eyebrow: '07 / Build standard',
+    eyebrow: '08 / Build standard',
     title: '구현·검증 기준',
     points: [
       'transform/opacity/border 중심으로 움직여 layout shift 최소화',
