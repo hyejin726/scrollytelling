@@ -21,7 +21,7 @@ export const storySteps = [
       '이번 발표의 목적은 PPT의 첫 스터디 방향처럼 좋은 웹을 느낌이 아니라 레이아웃, 타이포그래피, 상태, 모션, 성능, 접근성 언어로 분해해 보는 것입니다.',
     mockupState: 'idle',
     body:
-      '이번 회차에서는 ChatGPT, Gemini, Copilot 같은 챗봇 UI를 조금 더 중점적으로 보았습니다. 핵심은 챗봇 개선안을 제안하는 것이 아니라 “좋아 보입니다”를 구조, 레이아웃, 시간, 글씨체, 색상, 상태, 모션으로 나누고, 그 내용을 sticky mockup, scroll progress, active step, hover preview, speed comparison 같은 scrollytelling 장치로 전달하는 방식입니다.',
+      '이번 회차에서는 Gemini, Copilot 같은 챗봇 UI를 조금 더 중점적으로 보았습니다. 핵심은 챗봇 개선안을 제안하는 것이 아니라 “좋아 보입니다”를 구조, 레이아웃, 시간, 글씨체, 색상, 상태, 모션으로 나누고, 그 내용을 sticky mockup, scroll progress, active step, hover preview, speed comparison 같은 scrollytelling 장치로 전달하는 방식입니다.',
     points: [
       '주제는 frontend motion study이고, 챗봇 UI는 그 기준을 적용해 볼 분석 소재입니다.',
       'PPT 대신 웹 페이지를 쓰면 스크롤, hover, 상태 전환, 속도 비교를 발표 안에서 직접 보여줄 수 있습니다.',
@@ -31,12 +31,12 @@ export const storySteps = [
   {
     id: 'references',
     kicker: '02 / Reference set',
-    title: 'GPT · Gemini · Copilot을 분석 렌즈로 봅니다',
+    title: 'Gemini · Copilot을 분석 렌즈로 봅니다',
     summary:
-      '세 챗봇은 브랜드와 기능명보다 구조, 레이아웃, 시간, 글씨체의 차이로 보는 편이 motion study 목적에 더 잘 맞습니다.',
+      '챗봇 UI는 브랜드와 기능명보다 구조, 레이아웃, 시간, 글씨체의 차이로 보는 편이 motion study 목적에 더 잘 맞습니다.',
     mockupState: 'typing',
     body:
-      'ChatGPT, Gemini, Copilot을 볼 때는 “어떤 기능이 있나”보다 “질문 전후의 구조가 어떻게 이어지는가”, “입력창과 답변이 어떤 레이아웃 관계를 갖는가”, “대기와 전환 시간이 어떻게 설명되는가”, “본문과 상태 문구가 어떤 글씨 위계로 나뉘는가”를 봅니다. 그래야 스크롤 발표에서 어떤 요소를 어떤 순서로 보여줄지 정할 수 있습니다.',
+      'Gemini와 Copilot을 볼 때는 “어떤 기능이 있나”보다 “질문 전후의 구조가 어떻게 이어지는가”, “입력창과 답변이 어떤 레이아웃 관계를 갖는가”, “대기와 전환 시간이 어떻게 설명되는가”, “본문과 상태 문구가 어떤 글씨 위계로 나뉘는가”를 봅니다. 그래야 스크롤 발표에서 어떤 요소를 어떤 순서로 보여줄지 정할 수 있습니다.',
     points: [
       '구조: 입력 → 맥락 추가 → 응답 생성 → 출처/후속 행동으로 이어지는 흐름을 봅니다.',
       '레이아웃: 중앙 대화 영역, 하단 composer, 보조 도구/출처/작업 패널의 위치 관계를 봅니다.',
@@ -48,7 +48,7 @@ export const storySteps = [
     kicker: '03 / Common UI elements',
     title: '분석 소재를 UI 단위로 분해',
     summary:
-      '세 챗봇의 공통 요소는 composer, capability chips, answer card, state feedback, follow-up prompt로 정리할 수 있습니다.',
+      '챗봇의 공통 요소는 composer, capability chips, answer card, state feedback, follow-up prompt로 정리할 수 있습니다.',
     mockupState: 'searching',
     body:
       'PPT의 analysis layers처럼 한 번에 모든 내용을 말하지 않으려면 분석 대상을 작은 단위로 쪼개야 합니다. 챗봇 UI는 질문 전 composer, 응답 중 상태 피드백, 응답 후 action button과 follow-up prompt처럼 단계가 분명해서 스크롤 장면으로 나누기 좋습니다.',
@@ -107,54 +107,28 @@ export const storySteps = [
 
 export const visitedChatbotSites = [
   {
-    product: 'ChatGPT',
-    href: 'https://chatgpt.com/',
-    imageSrc: '/media/chatgpt.png',
-    access: '공개 shell 관찰',
-    summary:
-      'chatgpt.com 공개 화면에서는 New chat, Search chats, Images, Apps, Deep research, Chat history 같은 좌측 navigation과 “Ready when you are.” 중심 empty state가 먼저 보입니다.',
-    lenses: [
-      {
-        label: 'Structure',
-        note: '새 대화, 검색, 히스토리, 이미지, 앱, 리서치가 한쪽 navigation에 모여 있어 “대화 목록 + 작업 진입점” 구조가 먼저 읽힙니다.',
-      },
-      {
-        label: 'Layout',
-        note: '좌측은 탐색과 히스토리, 중앙은 현재 대화 시작면으로 분리됩니다. 빈 화면에서도 어디서 시작하고 어디로 돌아갈지 명확합니다.',
-      },
-      {
-        label: 'Time',
-        note: '첫 상태는 “Ready when you are.”처럼 즉시 대기 상태를 말합니다. 사용자가 입력하기 전부터 시스템이 준비된 느낌을 만듭니다.',
-      },
-      {
-        label: 'Typography',
-        note: '중앙 문구는 짧고 크게, navigation label은 작고 기능명 중심입니다. 긴 설명보다 역할별 텍스트 크기 차이가 구조를 만듭니다.',
-      },
-    ],
-  },
-  {
     product: 'Gemini',
     href: 'https://gemini.google.com/',
     imageSrc: '/media/gemini.png',
-    access: '공개 URL은 sign-in gate, 공식 도움말로 앱 흐름 보완',
+    access: '공개 화면 직접 접근 · 공식 도움말 보완',
     summary:
-      'gemini.google.com은 비로그인 접근 시 Sign in만 노출됩니다. Google 공식 도움말 기준으로 실제 앱은 하단 text box, Add files, Submit, side panel/recent chat 흐름을 중심으로 분석합니다.',
+      '2026-06-16 비로그인 공개 화면에서 “Meet Gemini” headline, prompt 입력창, 모델 chip, Sign in CTA를 확인했습니다. 파일 업로드, Submit, side panel/recent chat 같은 앱 내부 흐름은 Google 공식 도움말로 보완해 분석합니다.',
     lenses: [
       {
         label: 'Structure',
-        note: '질문 입력 전 Add files, Google Workspace 연결, @ 앱 지정처럼 맥락을 먼저 붙이는 구조가 강합니다.',
+        note: '공개 화면은 질문 입력을 먼저 열어 두고, 도움말 기준 실제 앱은 Add files, Google Workspace 연결, @ 앱 지정처럼 맥락을 붙이는 흐름을 제공합니다.',
       },
       {
         label: 'Layout',
-        note: '공식 도움말은 하단 text box와 Add files/Submit 흐름을 반복해서 설명합니다. 최근 대화는 side panel에서 관리되는 구조입니다.',
+        note: '공개 화면에서는 중앙 headline과 composer가 한 덩어리로 보입니다. 최근 대화와 side panel 흐름은 공식 도움말 기준으로 보완해 읽습니다.',
       },
       {
         label: 'Time',
-        note: '파일 추가, 앱 연결, 권한 요청, Submit처럼 단계가 분리됩니다. 사용자는 지금 입력 중인지, 연결이 필요한지, 제출 단계인지 알 수 있어야 합니다.',
+        note: 'prompt 작성, 파일 추가, 앱 연결, Submit처럼 행동 단계가 나뉩니다. 사용자는 지금 입력 중인지, 연결이 필요한지, 제출 단계인지 알 수 있어야 합니다.',
       },
       {
         label: 'Typography',
-        note: 'Google식 UI는 짧은 label과 명령어형 action text가 중심입니다. 긴 안내보다 text box, Add files, Submit 같은 기능어의 명확성이 중요합니다.',
+        note: '공개 화면의 headline은 짧고 크며, 실제 작업 흐름에서는 text box, Add files, Submit 같은 기능어가 행동을 명확하게 구분합니다.',
       },
     ],
   },
@@ -164,7 +138,7 @@ export const measurementProtocol = {
   title: '측정값으로 여백과 집중 위치를 판단합니다',
   kicker: 'Measurement Protocol · ChatGPT + Gemini',
   description:
-    'ChatGPT와 Gemini의 내부 React 소스코드를 그대로 읽는 방식은 공개 범위와 번들 난독화 때문에 근거가 불안정합니다. 그래서 실제 브라우저가 렌더링한 DOM에서 composer, main pane, sidebar의 bounding rect와 computed style을 측정합니다. 발표에서는 “대략 중앙에 있습니다”가 아니라 “main pane 기준 centerXRatio가 0.5에 가깝고, composer 폭은 720-860px 안에서 제한됩니다”처럼 읽습니다.',
+    '내부 React 소스코드를 그대로 읽는 방식은 공개 범위와 번들 난독화 때문에 근거가 불안정합니다. 그래서 로그인된 브라우저에서 실제 렌더링 DOM의 composer, main pane, computed style을 여러 화면 폭으로 측정했습니다. 평균값은 ChatGPT와 Gemini의 배치 성향을 비교하는 기준으로 쓰고, 개별값은 화면 폭에 따라 어떻게 달라지는지 보여줍니다.',
   premise: [
     {
       label: '소스코드 직접 분석의 한계',
@@ -185,23 +159,23 @@ export const measurementProtocol = {
   readingHighlights: [
     {
       label: '가로 중심',
-      value: '0.5 근처',
-      note: 'centerXRatio가 0.48-0.52면 작업 영역 중앙으로 읽힙니다.',
+      value: '평균 0.418 · 0.521',
+      note: 'Gemini는 작업 영역 중앙에 가깝고, GPT는 main pane 안에서 왼쪽 시작점이 더 강하게 측정됐습니다.',
     },
     {
-      label: '세로 시작점',
-      value: '0.42-0.54',
-      note: '첫 질문이 너무 위나 아래로 밀리지 않는 안정적인 높이입니다.',
+      label: '세로 위치',
+      value: '평균 0.415 · 0.500',
+      note: '두 값 모두 첫 질문을 시작하기에 과하게 아래로 밀리지 않은 위치입니다. Gemini는 화면 중앙에 더 가깝습니다.',
     },
     {
       label: '입력창 폭',
-      value: '680-860px',
-      note: '넓은 화면에서도 입력창을 이 범위 안에서 제한합니다.',
+      value: '평균 455px · 660px',
+      note: 'GPT는 화면 폭에 따라 375-524px로 바뀌고, Gemini는 660px 고정 폭이 뚜렷합니다.',
     },
     {
       label: '폭 비율',
-      value: '38-55%',
-      note: 'main pane 안에서 여백과 입력 영역이 같이 살아나는 범위입니다.',
+      value: '평균 46.1% · 54.5%',
+      note: '두 평균 모두 권장 범위 안에 들어옵니다. 작은 폭에서는 Gemini 68.4%, GPT 56.3%처럼 높아질 수 있습니다.',
     },
   ],
   metricGlossary: [
@@ -244,7 +218,7 @@ export const measurementProtocol = {
       plain:
         '비율과 별개로 브라우저가 실제로 계산한 입력창의 px 폭입니다.',
       example:
-        '넓은 모니터에서도 680-860px 정도로 제한되면 placeholder, 버튼, 음성 입력이 한 덩어리로 읽힙니다.',
+        '이번 실측에서는 GPT 평균 455px, Gemini 평균 660px입니다. 같은 입력창이라도 서비스별 폭 제한이 다르게 나타납니다.',
       visual: 'px',
       marker: '74%',
       fill: '64%',
@@ -266,15 +240,15 @@ export const measurementProtocol = {
       product: 'ChatGPT',
       page: 'chatgpt.com',
       selectorStrategy:
-        'textarea, [contenteditable="true"], form 후보를 찾고, 실제 입력창을 감싸는 composer 컨테이너를 기준으로 측정합니다.',
+        'textarea, rich-textarea, [contenteditable="true"] 후보를 찾고, 실제 입력창을 감싸는 상위 composer 컨테이너를 기준으로 측정합니다.',
       measurements: [
-        'main pane 기준 composer centerX / centerY 비율',
+        '로그인 화면 기준 composer rect',
+        'main pane 기준 centerX / centerY 비율',
         'main pane 대비 composer width 비율',
-        'computed max-width, margin-left/right, display, position',
-        'sidebar 또는 navigation을 제외한 usable pane 폭',
+        'display, position, max-width, margin-left/right',
       ],
       interpretation:
-        'ChatGPT는 전체 viewport 중앙이 아니라 좌측 navigation을 제외한 작업 영역 안에서 입력창이 어디에 놓이는지를 봐야 합니다. 그래서 “가운데 같습니다”가 아니라 “main pane 기준 중심에 수렴합니다”처럼 말합니다.',
+        '954/955 중복 폭은 955를 대표값으로 보고, 1281/1441/1517 폭과 함께 평균을 냈습니다. 평균 centerYRatio 0.415는 첫 질문 시작점으로 안정적이고, 평균 widthRatio 0.461은 권장 범위 안에 들어옵니다.',
     },
     {
       product: 'Gemini',
@@ -288,57 +262,59 @@ export const measurementProtocol = {
         'left rail 또는 side panel이 열린 상태와 닫힌 상태의 usable pane 변화',
       ],
       interpretation:
-        'Gemini도 캡처의 절대 좌표보다 “입력창이 작업 영역 중앙에 어떻게 제한되는가”를 봅니다. 특히 dark surface, 중앙 glow, 짧은 headline, compact composer가 여백을 통해 집중점을 만드는 방식을 비율로 기록합니다.',
+        'Gemini는 중앙 composer 상태인 965/1280/1517 폭을 평균냈습니다. 평균 centerXRatio 0.521, centerYRatio 0.500, widthRatio 0.545로 입력창이 작업 영역 중앙에 가깝게 배치됩니다.',
     },
   ],
   outputExamples: [
     {
       product: 'ChatGPT',
       reading:
-        '좌측 navigation이 있어도 composer는 전체 화면이 아니라 main pane 안에서 중심을 잡는지 확인합니다.',
+        '사용자가 로그인한 브라우저에서 console.table로 측정한 실제값입니다. 954/955 중복 폭은 955를 대표값으로 쓰고, 4개 폭의 평균을 함께 계산했습니다.',
       values: [
-        ['centerXRatio', '0.50에 가까울수록 안정'],
-        ['centerYRatio', '0.42-0.50이면 시작점이 너무 아래로 밀리지 않습니다'],
-        ['widthRatio', '0.45-0.55이면 입력창이 과하게 길거나 좁지 않습니다'],
-        ['composerWidth', '720-860px 안에서 읽기 폭을 제한'],
+        ['평균', 'centerX 0.418 · centerY 0.415 · width 0.461 · 455px'],
+        ['955 x 828', 'centerX 0.382 · centerY 0.415 · width 0.563 · 375px'],
+        ['1281 x 828', 'centerX 0.421 · centerY 0.415 · width 0.399 · 396px'],
+        ['1441 x 828', 'centerX 0.432 · centerY 0.415 · width 0.454 · 524px'],
+        ['1517 x 828', 'centerX 0.436 · centerY 0.415 · width 0.426 · 524px'],
       ],
     },
     {
       product: 'Gemini',
       reading:
-        '짧은 headline과 composer가 한 덩어리로 보이는지, dark surface 안에서 중심 비율이 유지되는지 봅니다.',
+        '사용자가 로그인한 브라우저에서 console.table로 측정한 실제값입니다. 중앙 composer 상태만 평균에 넣고, 하단 고정 composer로 찍힌 954px 값은 상태가 달라 제외했습니다.',
       values: [
-        ['centerXRatio', '0.50에 가까울수록 안정'],
-        ['centerYRatio', '0.45-0.54이면 headline과 composer가 한 초점으로 읽힘'],
-        ['widthRatio', '0.38-0.50이면 여백이 충분히 살아남음'],
-        ['composerWidth', '680-820px 안에서 compact한 입력 영역 유지'],
+        ['평균', 'centerX 0.521 · centerY 0.500 · width 0.545 · 660px'],
+        ['965 x 828', 'centerX 0.527 · centerY 0.500 · width 0.684 · 660px'],
+        ['1280 x 828', 'centerX 0.520 · centerY 0.500 · width 0.516 · 660px'],
+        ['1517 x 828', 'centerX 0.517 · centerY 0.500 · width 0.435 · 660px'],
+        ['제외', '954 x 828은 하단 composer 상태라 centerY 0.932로 측정'],
       ],
     },
   ],
   recommendedRanges: [
     {
       metric: 'centerXRatio',
-      good: '0.48-0.52',
+      good: '0.42-0.52',
       conclusion:
-        '입력창 중심이 main pane 중앙에서 ±2% 안에 있으면 사용자는 “여기가 시작점”이라고 빠르게 인식합니다.',
+        'Gemini처럼 0.5 근처면 명확한 중앙 시작점으로 읽힙니다. GPT 평균 0.418처럼 0.4 초반이면 좌측 탐색 영역을 둔 화면에서 왼쪽 시작점이 강한 배치로 해석합니다.',
     },
     {
       metric: 'centerYRatio',
-      good: '0.42-0.54',
+      good: '0.41-0.50',
       conclusion:
-        '첫 화면에서는 정중앙보다 살짝 위부터 중앙까지가 좋습니다. 너무 위면 명령창처럼 딱딱하고, 너무 아래면 시작점이 늦게 보입니다.',
+        '첫 질문을 시작하는 화면에서는 정중앙보다 살짝 위부터 중앙까지가 좋습니다. 이번 평균에서 GPT 0.415, Gemini 0.500으로 둘 다 시작점이 늦게 보이지 않습니다.',
     },
     {
       metric: 'widthRatio',
-      good: '0.38-0.55',
+      good: '평균 0.46-0.55',
       conclusion:
-        'main pane 대비 입력창이 절반 안팎이면 집중과 여백이 같이 살아납니다. 0.6을 넘으면 입력창이 화면을 지배하고, 0.35보다 작으면 도구성이 약해집니다.',
+        '입력창이 작업 영역의 38-55% 정도를 차지할 때 양쪽 여백과 시작점이 균형을 이룹니다. 평균 기준 GPT 0.461, Gemini 0.545로 둘 다 범위 안에 있지만, 작은 폭에서는 비율이 높아집니다.',
     },
     {
       metric: 'composerWidth',
-      good: '680-860px',
+      good: '455-660px 실측',
       conclusion:
-        '데스크톱에서는 이 범위가 한 줄 입력, placeholder, 도구 버튼을 담기에 안정적입니다. 넓은 화면에서는 px 고정이 아니라 max-width로 제한해야 합니다.',
+        '이번 로그인 화면 평균은 GPT 455px, Gemini 660px입니다. Gemini는 고정 폭을 유지하고, GPT는 화면 폭에 따라 375px에서 524px까지 변합니다.',
     },
     {
       metric: 'marginLeft / marginRight',
@@ -350,8 +326,8 @@ export const measurementProtocol = {
   steps: [
     {
       label: 'Viewport set',
-      value: '1280 / 1440 / 1920px',
-      note: '100% zoom에서 3개 폭을 반복 측정해 한 캡처의 우연한 좌표가 아니라 유지되는 레이아웃 규칙을 찾습니다.',
+      value: '955-1517px',
+      note: '100% zoom에서 여러 폭을 반복 측정해 한 캡처의 우연한 좌표가 아니라 유지되는 레이아웃 규칙을 찾습니다.',
     },
     {
       label: 'Open state',
@@ -368,13 +344,27 @@ export const measurementProtocol = {
   const editable = document.querySelector(
     'textarea, rich-textarea, [contenteditable="true"]'
   );
+
   if (!editable) return null;
 
-  return (
-    editable.closest('form') ||
-    editable.closest('[role="form"]') ||
-    editable.parentElement
-  );
+  let node = editable;
+  let best = editable;
+
+  for (let i = 0; i < 6 && node.parentElement; i += 1) {
+    node = node.parentElement;
+    const rect = node.getBoundingClientRect();
+    const bestRect = best.getBoundingClientRect();
+
+    if (
+      rect.width >= bestRect.width &&
+      rect.height >= bestRect.height &&
+      rect.height <= 260
+    ) {
+      best = node;
+    }
+  }
+
+  return best;
 }
 
 const composer = findComposer();
@@ -387,9 +377,13 @@ console.table({
   viewport: \`\${window.innerWidth} x \${window.innerHeight}\`,
   composerWidth: Math.round(c.width),
   composerHeight: Math.round(c.height),
-  centerXRatio: (((c.left + c.width / 2) - m.left) / m.width).toFixed(3),
-  centerYRatio: (((c.top + c.height / 2) - m.top) / m.height).toFixed(3),
-  widthRatio: (c.width / m.width).toFixed(3),
+  composerTop: Math.round(c.top),
+  composerLeft: Math.round(c.left),
+  mainWidth: Math.round(m.width),
+  mainHeight: Math.round(m.height),
+  centerXRatio: +(((c.left + c.width / 2) - m.left) / m.width).toFixed(3),
+  centerYRatio: +(((c.top + c.height / 2) - m.top) / m.height).toFixed(3),
+  widthRatio: +(c.width / m.width).toFixed(3),
   display: cs.display,
   position: cs.position,
   maxWidth: cs.maxWidth,
@@ -397,7 +391,7 @@ console.table({
   marginRight: cs.marginRight,
 });`,
   takeaway:
-    '결론은 단순합니다. 좋은 챗봇 첫 화면은 입력창을 화면 한가운데에 “그냥” 놓지 않습니다. 좌측 navigation이나 rail을 제외한 작업 영역 안에서 centerXRatio는 0.5 근처로 맞추고, composer 폭은 680-860px 정도로 제한하며, centerYRatio는 0.42-0.54 안에서 시작점을 만듭니다. 이 범위를 벗어나면 여백은 장식이 아니라 집중을 방해하는 빈 공간이 됩니다.',
+    '결론은 단순합니다. 좋은 챗봇 첫 화면은 입력창을 화면 한가운데에 “그냥” 놓지 않습니다. 실제 로그인 화면 평균을 보면 GPT는 centerYRatio 0.415로 살짝 위에서 시작하고, Gemini는 centerXRatio 0.521 / centerYRatio 0.500으로 중앙성을 강하게 잡습니다. 평균 widthRatio는 GPT 0.461, Gemini 0.545라 입력창이 작업 영역의 절반 안팎을 차지할 때 여백과 시작점이 가장 안정적으로 읽힙니다.',
 };
 
 export const referenceSections = [
@@ -409,7 +403,7 @@ export const referenceSections = [
     icon: Layers3,
     title: '입력 → 맥락 → 응답 → 행동 구조',
     description:
-      'ChatGPT의 파일·도구·Canvas, Gemini의 업로드와 Google 앱 연결, Copilot의 Add content와 Pages는 모두 질문 전에 맥락을 붙이고 답변 후 행동으로 넘기는 구조를 만듭니다.',
+      'Gemini의 업로드와 Google 앱 연결, Copilot의 Add content와 Pages는 모두 질문 전에 맥락을 붙이고 답변 후 행동으로 넘기는 구조를 만듭니다.',
     takeaway:
       '분석 포인트: 챗봇은 대화창 하나가 아니라 입력, 맥락, 응답, 근거, 후속 행동이 이어지는 작업 구조입니다.',
   },
@@ -421,7 +415,7 @@ export const referenceSections = [
     icon: NotebookTabs,
     title: '대화 중앙, 도구는 주변에 둡니다',
     description:
-      '세 챗봇 모두 읽어야 할 대화는 중앙에 두고, composer는 하단에 고정하며, 첨부·도구·출처·작업 전환은 주변에 배치합니다. 사용자는 본문을 읽다가 짧은 거리 안에서 다음 행동으로 이동합니다.',
+      '관찰한 챗봇 UI는 읽어야 할 대화를 중앙에 두고, composer는 하단에 고정하며, 첨부·도구·출처·작업 전환은 주변에 배치합니다. 사용자는 본문을 읽다가 짧은 거리 안에서 다음 행동으로 이동합니다.',
     takeaway:
       '분석 포인트: 레이아웃은 말풍선 모양보다 “읽기 영역, 입력 영역, 보조 작업 영역이 얼마나 잘 분리되는가”가 중요합니다.',
   },
@@ -433,7 +427,7 @@ export const referenceSections = [
     icon: Clock3,
     title: '대기 시간을 상태로 쪼갭니다',
     description:
-      '전송 직후 반응, 검색 중, 생성 중, 출처 확인, 답변 완료가 한 덩어리 로딩으로 보이면 불안합니다. ChatGPT, Gemini, Copilot의 좋은 지점은 기다림을 작은 상태 문구와 움직임으로 나누어 설명하는 방식에 있습니다.',
+      '전송 직후 반응, 검색 중, 생성 중, 출처 확인, 답변 완료가 한 덩어리 로딩으로 보이면 불안합니다. Gemini와 Copilot의 좋은 지점은 기다림을 작은 상태 문구와 움직임으로 나누어 설명하는 방식에 있습니다.',
     takeaway:
       '분석 포인트: 120ms는 즉시 피드백, 200ms는 현재 위치 전환, 320ms는 답변 reveal, 480ms는 큰 순번 전환처럼 역할별 시간 값을 분리합니다.',
   },
@@ -798,20 +792,8 @@ export const motionTokens = [
 
 export const sourceLinks = [
   {
-    label: 'ChatGPT public app shell',
-    href: 'https://chatgpt.com/',
-  },
-  {
     label: 'Gemini public app shell',
     href: 'https://gemini.google.com/',
-  },
-  {
-    label: 'ChatGPT file uploads',
-    href: 'https://help.openai.com/en/articles/8555545-file-uploads-faq',
-  },
-  {
-    label: 'ChatGPT Canvas',
-    href: 'https://help.openai.com/en/articles/9930697-what-is-the-canvas-feature-in-chatgpt-and-how-do-i-use-it',
   },
   {
     label: 'Google Gemini file upload',
@@ -861,13 +843,13 @@ export const backupSlides = [
     title: 'PPT의 목적: 좋은 웹을 기준으로 분해',
     points: [
       '첫 스터디의 목적은 좋은 웹을 “느낌”이 아니라 layout, typo, color, state, motion, performance, accessibility 언어로 읽는 것입니다',
-      '사내 챗봇을 만드는 웹 담당자 관점에서 ChatGPT, Gemini, Copilot 같은 챗봇 UI를 더 중점적으로 관찰했습니다',
+      '사내 챗봇을 만드는 웹 담당자 관점에서 Gemini, Copilot 같은 챗봇 UI를 더 중점적으로 관찰했습니다',
       '목표는 챗봇 개선 제안이 아니라 레퍼런스 분석 → 구현 단위 → 검증 기준으로 정리하는 발표 방식을 공유하는 것입니다',
     ],
   },
   {
     eyebrow: '02 / Chatbot site lenses',
-    title: 'ChatGPT와 Gemini는 분석 렌즈로 봅니다',
+    title: 'Gemini와 Copilot은 분석 렌즈로 봅니다',
     points: [
       '구조: 입력, 맥락 추가, 응답, 출처/후속 행동이 어떻게 이어지는지 봅니다',
       '레이아웃: side navigation, 중앙 대화면, 하단 composer, 보조 패널의 위치 관계를 봅니다',
@@ -879,9 +861,9 @@ export const backupSlides = [
     title: '측정값으로 여백과 집중 위치를 판단합니다',
     points: [
       '원본 앱 소스코드는 비공개이거나 배포마다 바뀌는 hashed bundle이므로 내부 함수명을 추측하지 않습니다',
-      'ChatGPT와 Gemini 모두 getBoundingClientRect()와 getComputedStyle()로 centerXRatio, centerYRatio, widthRatio, max-width를 출력합니다',
+      '실제 출력값은 로그인 화면에서 getBoundingClientRect()와 getComputedStyle()로 측정한 값을 사용합니다',
       'centerXRatio는 가로 중심, centerYRatio는 세로 시작점, widthRatio는 입력창 폭 비율로 읽으면 됩니다',
-      '권장 범위는 centerXRatio 0.48-0.52, centerYRatio 0.42-0.54, widthRatio 0.38-0.55, composerWidth 680-860px입니다',
+      '실측 평균은 GPT centerX 0.418 / centerY 0.415 / width 0.461, Gemini centerX 0.521 / centerY 0.500 / width 0.545입니다',
     ],
   },
   {

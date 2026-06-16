@@ -19,11 +19,6 @@ import { mockConversation } from '../data/storyContent.js';
 
 const referenceExamples = [
   {
-    name: 'ChatGPT',
-    label: 'Files · Images · Tools · Canvas',
-    text: '입력창 주변에서 파일, 이미지, 도구, 작업 캔버스가 시작됩니다.',
-  },
-  {
     name: 'Gemini',
     label: 'Upload · Google apps · Context',
     text: '업로드한 자료와 연결 앱이 질문의 맥락을 넓힙니다.',
@@ -107,7 +102,7 @@ function SearchingState() {
 
 function ReferenceCarousel() {
   return (
-    <div className="reference-carousel" aria-label="GPT, Gemini, Copilot UI 예시">
+    <div className="reference-carousel" aria-label="Gemini, Copilot UI 예시">
       {referenceExamples.map((item, index) => (
         <article
           key={item.name}

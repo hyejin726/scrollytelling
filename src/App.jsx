@@ -211,10 +211,10 @@ function ChatbotSiteAnalysisSection() {
     <section className="site-analysis-section" aria-labelledby="site-analysis-title">
       <div className="section-heading">
         <p>Visited Site Notes</p>
-        <h2 id="site-analysis-title">ChatGPT · Gemini 구조와 레이아웃 관찰</h2>
+        <h2 id="site-analysis-title">Gemini 구조와 레이아웃 관찰</h2>
         <span>
-          실제 사이트를 방문해 확인한 공개 화면과 공식 도움말을 기준으로, 기능명이 아니라
-          구조 · 레이아웃 · 시간 · 글씨체 관점에서 다시 읽습니다.
+          실제 Gemini 공개 화면과 공식 도움말을 기준으로, 기능명이 아니라 구조 · 레이아웃
+          · 시간 · 글씨체 관점에서 다시 읽습니다.
         </span>
       </div>
       <div className="visited-site-grid">
@@ -309,11 +309,11 @@ function MeasurementProtocolSection() {
             ))}
           </div>
 
-          <div className="measurement-output-grid" aria-label="측정 출력값 읽는 법">
+          <div className="measurement-output-grid" aria-label="측정 결과와 접근 상태">
             {measurementProtocol.outputExamples.map((item) => (
               <article key={item.product} className="measurement-output-card">
                 <div>
-                  <span>Measured output</span>
+                  <span>Measurement result</span>
                   <h3>{item.product}</h3>
                 </div>
                 <p>{item.reading}</p>
@@ -750,9 +750,8 @@ function App() {
           </h1>
           <p>
             첫 스터디의 목적처럼 layout, typography, color, state, motion,
-            performance, accessibility 관점으로 레퍼런스를 분해합니다. 나는 사내
-            챗봇을 만드는 웹 담당자라 ChatGPT와 Gemini 같은 챗봇 UI를 조금 더
-            중점적으로 보았습니다.
+            performance, accessibility 관점으로 레퍼런스를 분해합니다. Gemini와 
+            Copilot 같은 챗봇 UI를 조금 더 중점적으로 보았습니다.
           </p>
           <div className="intro-actions" aria-label="발표 빠른 이동">
             <a href="#story" className="primary-action">
@@ -818,7 +817,7 @@ function App() {
       <section className="reference-section" aria-labelledby="reference-title">
         <div className="section-heading">
           <p>Reference Patterns</p>
-          <h2 id="reference-title">GPT · Gemini · Copilot 분석 렌즈</h2>
+          <h2 id="reference-title">Gemini · Copilot 분석 렌즈</h2>
           <span>
             실제 화면을 그대로 복제하지 않고, 구조 · 레이아웃 · 시간 · 글씨체를
             중심으로 챗봇 UI를 분석 가능한 UX 패턴으로 추상화합니다.

@@ -4,7 +4,7 @@
 
 이 프로젝트는 챗봇 개선 제안서가 아니라, `frontend_motion_study_session1+복구복구.pptx`의 방향처럼 좋은 웹을 "느낌"이 아니라 `layout`, `typography`, `color`, `state`, `motion`, `performance`, `accessibility` 관점으로 분해해 보는 scrollytelling 발표 페이지입니다.
 
-발표자는 사내 챗봇을 만드는 웹 담당자라는 업무 맥락이 있기 때문에, ChatGPT, Gemini, Copilot 같은 챗봇 UI를 분석 소재로 조금 더 중점적으로 다룹니다.
+발표자는 사내 챗봇을 만드는 웹 담당자라는 업무 맥락이 있기 때문에, Gemini, Copilot 같은 챗봇 UI를 분석 소재로 조금 더 중점적으로 다룹니다.
 
 ## 발표 목적
 
@@ -24,7 +24,7 @@
 
 2. 챗봇 UI를 분석 소재로 선택한 이유
    - 사내 챗봇 웹을 담당하고 있어 업무와 가까운 사례다.
-   - ChatGPT, Gemini, Copilot은 입력창, 도구, 상태, 답변, 후속 행동이 뚜렷하다.
+   - Gemini, Copilot은 입력창, 도구, 상태, 답변, 후속 행동이 뚜렷하다.
 
 3. 챗봇 UI 분석
    - 구조: 입력, 맥락 추가, 응답, 출처, 후속 행동
@@ -122,7 +122,6 @@ public/media
 현재 정리된 미디어 파일은 다음 위치에 있습니다.
 
 ```text
-public/media/chatgpt.png
 public/media/gemini.png
 public/media/chanel.mp4
 public/media/mouse.mp4
@@ -136,7 +135,7 @@ public/media/scrollbar.mp4
 코드에서는 다음처럼 절대 경로로 참조합니다.
 
 ```js
-imageSrc: '/media/chatgpt.png'
+imageSrc: '/media/gemini.png'
 videoSrc: '/media/chanel.mp4'
 ```
 
@@ -150,4 +149,3 @@ videoSrc: '/media/chanel.mp4'
 - lucide-react
 - CSS transition / transform / opacity 중심 모션
 - IntersectionObserver 기반 active step 처리
-
